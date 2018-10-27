@@ -8,7 +8,7 @@
 	
 
 
-<h1 style="text-align: center; padding: 15px;">ADD NEW COMPANY</h1>
+<h1 style="text-align: center; padding: 15px;">ADD NEW AGENT</h1>
 
 <div class="box-content">
 						<form class="form-horizontal" action="{{ url('insert_company') }}" method="POST"> @csrf  

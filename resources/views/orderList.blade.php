@@ -30,13 +30,12 @@
 
         <tr>
           <th scope="row">{{ $showOrdersDetails->id }}</th>
-          <td>{{ $showOrdersDetails->agent_name }}</td>
+          <td>{{ $showOrdersDetails->company_name }}</td>
           <td>{{ $showOrdersDetails->parcel_desc }}</td>
           <td>{{ $showOrdersDetails->weight }}</td>
           <td>{{ $showOrdersDetails->order_date }}</td>
           <td>{{ $showOrdersDetails->booking_amount }}</td>
-          <td>{{ $showOrdersDetails->address }}</td>
-
+          
 
           <td>
           <a href="">

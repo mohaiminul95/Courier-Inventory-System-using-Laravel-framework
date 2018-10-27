@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\order;
 
+use DB;
+
 
 class ordersController extends Controller
 {
@@ -50,8 +52,15 @@ class ordersController extends Controller
 
     public function viewOrder() {
 
-    	
-    	$viewAllOrders=order::all();
+
+    	// $viewAllOrders=order::all();
+
+    	$viewAllOrders=DB::table('orders')
+    		->join('companies','orders.agent_id','companies.id')
+    		->select('orders.*','companies.company_name')
+    		->where('orders.is_processed','no')
+    		->get();
+
         return view('orderList')->with('viewAllOrders',$viewAllOrders);
 
     }
