@@ -20,7 +20,21 @@ Route::get('/userpanel', function () {
     return view('add_company');
 });
 
+
 Route::post('insert_company','companyController@insertCompany');
+
+Route::get('add_order','companyController@addOrder');
+
+Route::get('add_order','companyController@displayCompanyName');
+
+Route::get('view_company','companyController@displayAllCompany');
+
+Route::get('view_company/{id}','ordersController@selectOrderCompany');
+
+
+Route::post('insert_order','ordersController@insertOrder');
+
+Route::get('view_orders','ordersController@viewOrder');
 
 
 

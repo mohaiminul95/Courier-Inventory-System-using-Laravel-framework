@@ -339,8 +339,11 @@
       <div id="sidebar-left" class="span2">
         <div class="nav-collapse sidebar-nav">
           <ul class="nav nav-tabs nav-stacked main-menu">
-            <li><a href=""><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Company</span></a></li> 
-            <li><a href=""><i class="icon-envelope"></i><span class="hidden-tablet">View Companies</span></a></li>
+            <li><a href="{{ URL::to('userpanel') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Agent</span></a></li> 
+            <li><a href="{{ URL::to('add_order') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Order</span></a></li>
+            <li><a href="{{ URL::to('view_company') }}"><i class="icon-envelope"></i><span class="hidden-tablet">View All Agents</span></a></li>
+            <li><a href="{{ URL::to('view_orders') }}"><i class="icon-envelope"></i><span class="hidden-tablet">View All Orders</span></a></li>
+
             
           </ul>
         </div>
