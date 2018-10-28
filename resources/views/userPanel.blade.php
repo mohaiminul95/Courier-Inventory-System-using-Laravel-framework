@@ -342,6 +342,7 @@
             <li><a href="{{ URL::to('userpanel') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Agent</span></a></li> 
             <li><a href="{{ URL::to('add_order') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Order</span></a></li>
             <li><a href="{{ URL::to('view_company') }}"><i class="icon-envelope"></i><span class="hidden-tablet">All Agents</span></a></li>
+            <li><a href="{{ URL::to('all_orders') }}"><i class="icon-envelope"></i><span class="hidden-tablet">All Orders</span></a></li>
             <li><a href="{{ URL::to('pending_orders') }}"><i class="icon-envelope"></i><span class="hidden-tablet">All Pending Orders</span></a></li>
             <li><a href="{{ URL::to('shipped_orders') }}"><i class="icon-envelope"></i><span class="hidden-tablet">All Shipped Orders</span></a></li>
 

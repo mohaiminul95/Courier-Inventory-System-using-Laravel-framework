@@ -50,6 +50,22 @@ class ordersController extends Controller
 
 
 
+    public function allOrder() {
+
+
+        // $viewAllOrders=order::all();
+
+        $viewAllOrders=DB::table('orders')
+            ->join('companies','orders.agent_id','companies.id')
+            ->select('orders.*','companies.company_name')
+            ->get();
+
+        return view('allOrderList')->with('viewAllOrders',$viewAllOrders);
+
+    }
+
+
+
     public function viewPendingOrder() {
 
 
@@ -77,7 +93,7 @@ class ordersController extends Controller
             ->where('orders.is_processed','yes')
             ->get();
 
-        return view('pendingOrderList')->with('viewAllOrders',$viewAllOrders);
+        return view('shippedOrderList')->with('viewAllOrders',$viewAllOrders);
 
     }
 
