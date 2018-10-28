@@ -34,7 +34,9 @@ Route::get('view_company/{id}','ordersController@selectOrderCompany');
 
 Route::post('insert_order','ordersController@insertOrder');
 
-Route::get('view_orders','ordersController@viewOrder');
+Route::get('pending_orders','ordersController@viewPendingOrder');
+
+Route::get('shipped_orders','ordersController@viewShippedOrder');
 
 
 

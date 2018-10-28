@@ -7,7 +7,7 @@
 <div class="formBox" style="min-height: 50px; width: 70%; margin: 0 auto;">
   
 
-<h1 style="text-align: center; padding: 15px;">VIEW ALL REGISTERED COMPANY NAMES</h1>
+<h1 style="text-align: center; padding: 15px;">ALL REGISTERED COMPANY NAMES</h1>
 
 
   <div class="box-content" style="width: 118%;">
