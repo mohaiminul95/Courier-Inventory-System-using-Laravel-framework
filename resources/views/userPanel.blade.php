@@ -459,6 +459,73 @@
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+
+  <form class="form-horizontal"> @csrf  
+              <fieldset>
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">Company Name</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_company_name" type="text" name="company_name">
+                </div>
+                </div>
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">Owner Name</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_owner_name" type="text" name="owner_name">
+                </div>
+                </div>
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">Email</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_email" type="text" name="email">
+                </div>
+                </div>  
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">Phone Number</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_phone" type="text" name="phone">
+                </div>
+                </div>
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">Company Type</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_company_type" type="text" name="company_type">
+                  </div>
+                </div>
+                 <div class="control-group">
+                <label class="control-label" for="edit_address">Company Address</label>
+                <div class="controls">
+                  <input class="input-xlarge focused" id="edit_address" type="text" name="address">
+                 </div>
+                </div>  
+                  <input class="" id="agent_id" type="hidden" name="agent_id">
+              </fieldset>
+              </form>
+          
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" onclick="updateAgent()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

@@ -9,21 +9,36 @@ use App\company;
 use DB;
 
 class companyController extends Controller
-{
+{   
+
+
+
+
+
+
+
+
     public function insertCompany(Request $request) {
 
-    	$company=new company;
+
+    	
+        $company = company::firstOrNew(['id'=>$request->id]);
     	$company->company_name=$request->company_name;
     	$company->owner_name=$request->owner_name;
     	$company->email=$request->email;
     	$company->phone=$request->phone;
     	$company->company_type=$request->company_type;
     	$company->address=$request->address;
-    	$company->save();
+    	
 
 
 
     	if($company->save()) {
+
+            if($request->ajax()){
+                return "true";
+            }
+
             $notification=array(
                 'message'=>'Company Information Added Successfully!',
                 'alert-type'=>'success'

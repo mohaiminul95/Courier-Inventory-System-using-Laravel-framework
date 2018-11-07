@@ -11,6 +11,9 @@ use DB;
 
 class ordersController extends Controller
 {
+
+     
+    
     public function selectOrderCompany($id) {
 
         $allCompanyName=company::all();

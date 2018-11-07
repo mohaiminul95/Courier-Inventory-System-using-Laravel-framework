@@ -29,8 +29,8 @@ Route::get('add_order','companyController@displayCompanyName');
 
 Route::get('view_company','companyController@displayAllCompany');
 
-Route::get('view_company/{id}','ordersController@selectOrderCompany');
 
+Route::get('view_company/{id}','ordersController@selectOrderCompany');
 
 Route::post('insert_order','ordersController@insertOrder');
 
