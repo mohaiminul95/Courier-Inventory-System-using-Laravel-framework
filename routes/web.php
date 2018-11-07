@@ -22,6 +22,7 @@ Route::get('/userpanel', function () {
 
 
 Route::post('insert_company','companyController@insertCompany');
+Route::post('delete_company','companyController@deleteCompany');
 
 Route::get('add_order','companyController@addOrder');
 

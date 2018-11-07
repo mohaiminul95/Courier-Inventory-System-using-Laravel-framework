@@ -13,11 +13,6 @@ class companyController extends Controller
 
 
 
-
-
-
-
-
     public function insertCompany(Request $request) {
 
 
@@ -49,6 +44,20 @@ class companyController extends Controller
         else
                 echo "Error";
 
+    }
+
+
+      public function deleteCompany(Request $request) {
+           
+        if($request->ajax()){
+            $id = $request->id;
+            $company = new company();
+            $company = company::find($id);
+
+            
+         
+            echo $company->delete($id);
+        }
     }
 
 

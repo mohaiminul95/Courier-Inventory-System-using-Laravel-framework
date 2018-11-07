@@ -44,7 +44,7 @@
             <button class="btn btn-primary" onclick="edit({{ $showCompanyDetails->id }})"  data-toggle="modal" data-target="#editModal">EDIT</button>
           </a>
           <a href="">
-            <button class="btn btn-danger">DELETE</button>
+            <button class="btn btn-danger" onclick="deleteAgent({{ $showCompanyDetails->id }})">DELETE</button>
           </a>
           
         </td>
@@ -67,6 +67,43 @@
 @endsection
 
 <script type="text/javascript">
+
+
+
+function deleteAgent(id){
+    
+  var x = confirm("Are you sure?");
+
+  if(x){
+    $.ajax({
+       type:'POST',
+       url:'/courier/delete_company',
+       data:{
+            id : id,
+            _token : '<?php echo csrf_token() ?>',
+          },
+
+
+
+       success:function(data){
+         
+
+
+       }
+    });
+
+
+
+
+
+
+
+  }
+
+
+  
+}
+
   
 function edit(id) {
 
@@ -127,6 +164,4 @@ function updateAgent() {
 
 
 </script>
-
-
 
