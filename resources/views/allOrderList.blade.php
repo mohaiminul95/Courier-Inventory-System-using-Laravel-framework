@@ -40,7 +40,7 @@
           <td>
           <a href="">
             <button class="btn btn-primary">EDIT</button>
-          </a>
+          </a>          
           <a href="">
             <button class="btn btn-danger">DELETE</button>
           </a>
@@ -62,4 +62,13 @@
 </div>
 
 
+
+
+
+
+
+
+
 @endsection
+
+

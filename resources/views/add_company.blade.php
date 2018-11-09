@@ -11,7 +11,7 @@
 <h1 style="text-align: center; padding: 15px;">ADD NEW AGENT</h1>
 
 <div class="box-content">
-						<form class="form-horizontal" action="{{ url('insert_company') }}" method="POST"> @csrf  
+						<form class="form-horizontal" action="{{ url('insertOrupdate_company') }}" method="POST"> @csrf  
 							<fieldset>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Company Name</label>

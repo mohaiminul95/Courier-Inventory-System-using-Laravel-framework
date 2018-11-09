@@ -13,7 +13,7 @@ class companyController extends Controller
 
 
 
-    public function insertCompany(Request $request) {
+    public function insertOrUpdateCompany(Request $request) {
 
 
     	

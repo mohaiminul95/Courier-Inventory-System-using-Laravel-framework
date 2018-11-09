@@ -11,7 +11,6 @@
 |
 */
 Route::get('/', function () {
-die("szfsd");
     return view('welcome');
 });
 
@@ -21,7 +20,7 @@ Route::get('/userpanel', function () {
 });
 
 
-Route::post('insert_company','companyController@insertCompany');
+Route::post('insertOrupdate_company','companyController@insertOrUpdateCompany');
 Route::post('delete_company','companyController@deleteCompany');
 
 Route::get('add_order','companyController@addOrder');
@@ -34,6 +33,8 @@ Route::get('view_company','companyController@displayAllCompany');
 Route::get('view_company/{id}','ordersController@selectOrderCompany');
 
 Route::post('insert_order','ordersController@insertOrder');
+
+Route::post('update_order','ordersController@updateOrder');
 
 Route::get('all_orders','ordersController@allOrder');
 

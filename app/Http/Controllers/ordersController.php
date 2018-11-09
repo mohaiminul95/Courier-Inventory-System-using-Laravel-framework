@@ -63,6 +63,8 @@ class ordersController extends Controller
             ->select('orders.*','companies.company_name')
             ->get();
 
+
+        //var_dump($viewAllOrders); die;
         return view('allOrderList')->with('viewAllOrders',$viewAllOrders);
 
     }
@@ -100,6 +102,39 @@ class ordersController extends Controller
 
     }
 
+
+
+    public function updateOrder(Request $request) {
+
+
+
+        $order=order::find($id);
+        $order->company_name = $request->company_name;
+        $order->parcel_desc = $request->parcel_desc;
+        $order->weight = $request->weight;
+        $order->order_date = $request->order_date;
+        $order->booking_amount = $request->booking_amount;
+        $order->processing_amount = $request->processing_amount;
+        $order->processing_date = $request->processing_date;
+        $order->net_profit = $request->net_profit;
+        $order->is_processed = $request->is_processed;
+        $order->orderId = $request->orderId;
+        $order->id = $request->id;
+        $order->save();
+
+        if($order->save()) {
+            $notification=array(
+                'message'=>'Order Placed Successfully!',
+                'alert-type'=>'success'
+            );
+                return Redirect()->back()->with($notification);
+        }
+
+        else
+                echo "Error";
+
+
+    }
 
 
 }
