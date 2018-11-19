@@ -21,7 +21,7 @@
           <th scope="col">Weight</th>
           <th scope="col">Order Date</th>
           <th scope="col">Booking Amount</th>
-          <th scope="col">Action</th>
+          <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
@@ -35,17 +35,7 @@
           <td>{{ $showOrdersDetails->weight }}</td>
           <td>{{ $showOrdersDetails->order_date }}</td>
           <td>{{ $showOrdersDetails->booking_amount }}</td>
-          
-
-          <td>
-          <a href="">
-            <button class="btn btn-primary">EDIT</button>
-          </a>          
-          <a href="">
-            <button class="btn btn-danger">DELETE</button>
-          </a>
-          
-        </td>
+          <td>{{ ucfirst($showOrdersDetails->is_processed)}}</td>
 
 
         </tr>
