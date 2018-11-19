@@ -1,8 +1,8 @@
+
 @extends('userPanel')
 
 
 @section('content')
-
 
 <div class="formBox" style="min-height: 50px; width: 70%; margin: 0 auto;">
   
@@ -37,9 +37,10 @@
           <td id="booking_amount_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->booking_amount }}</td>
           
 
+
           <td>
           <a href="">
-            <button class="btn btn-primary" onclick="processOrders({{ $showOrdersDetails->id }})" data-toggle="modal" data-target="#exampleModal">EDIT</button>
+            <button class="btn btn-primary" onclick="processOrders({{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id}})" data-toggle="modal" data-target="#exampleModal">EDIT</button>
           </a>
           <a href="">
             <button class="btn btn-danger">DELETE</button>
@@ -119,12 +120,12 @@
                   <input class="input-xlarge focused" id="edit_processing_date" type="date" name="processing_date" style="height: 25px;">
                  </div>
                 </div> 
-                <div class="control-group">
+               <!-- <div class="control-group">
                 <label class="control-label" for="edit_address">Net Profit</label>
                 <div class="controls">
                   <input class="input-xlarge focused" id="edit_net_profit" type="text" name="net_profit">
                  </div>
-                </div>
+                </div> -->
               
                   <input id="id" type="hidden" name="id">
               </fieldset>
@@ -133,8 +134,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="updateOrder()" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Process</button>
+        <button type="button" onclick="updateOrder(0,{{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id }})" class="btn btn-primary">Save changes</button>
+        <button type="button" onclick="updateOrder(1,{{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id }})" class="btn btn-success" data-dismiss="modal">Process</button>
       </div>
     </div>
   </div>
@@ -149,8 +150,11 @@
 <script type="text/javascript">
 
   
-function processOrders(id) {
+function processOrders(id, agent_id) {
 
+
+   
+  
   
   $("#edit_company_name").val($("#company_name_"+id).html());
   $("#edit_parcel_desc").val($("#parcel_desc_"+id).html());
@@ -159,20 +163,17 @@ function processOrders(id) {
   $("#edit_booking_amount").val($("#booking_amount_"+id).html());
   $("#edit_processing_amount").val($("#processing_amount_"+id).html());
   $("#edit_processing_date").val($("#processing_date_"+id).html());
-  $("#edit_net_profit").val($("#net_profit_"+id).html());
-  $("#edit_is_processed").val($("#is_processed_"+id).html());
-  $("#id").val(id);
-
-
-
+  //$("#edit_net_profit").val($("#net_profit_"+id).html());
+  //$("#edit_is_processed").val($("#is_processed_"+id).html());
+  
 } 
 
 
 
- function updateOrder() {
+ function updateOrder(is_processing, id, agent_id) {
 
 
-
+  
    company_name = $("#edit_company_name").val();
    parcel_desc = $("#edit_parcel_desc").val();
    weight = $("#edit_weight").val();
@@ -181,31 +182,33 @@ function processOrders(id) {
    processing_amount = $("#edit_processing_amount").val();
    processing_date = $("#edit_processing_date").val();
    net_profit = $("#edit_net_profit").val();
-   id = $("#id").val();
+   id = id;
+   agentId = agent_id;
 
-
+  
 
    $.ajax({
                type:'POST',
                url:'/courier/update_order',
-               data:{company_name : company_name,
-                      parcel_desc : parcel_desc,
-                      weight : weight,
-                      order_date : order_date,
-                      booking_amount : booking_amount,
-                      processing_amount : processing_amount,
-                      processing_date : processing_date,
-                      net_profit : net_profit,
-                      orderId : orderId,
-                      is_processing : is_processing,
-                      id : id,
-                    _token : '<?php echo csrf_token() ?>',
+               data:{
+                      company_name: company_name,
+                      parcel_desc: parcel_desc,
+                      weight: weight,
+                      order_date: order_date,
+                      booking_amount: booking_amount,
+                      processing_amount: processing_amount,
+                      processing_date: processing_date,
+                      net_profit: net_profit,
+                      id: id,
+                      agent_id: agentId,
+                      is_processed:is_processing,
+                      _token : '<?php echo csrf_token() ?>',
                   },
 
 
               success:function(data){
 
-
+                  location.reload(); 
                 }
             });
  
