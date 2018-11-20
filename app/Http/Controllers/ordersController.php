@@ -76,13 +76,14 @@ class ordersController extends Controller
 
     	// $viewAllOrders=order::all();
 
+        //dd("sdf");
         $viewAllOrders=DB::table('orders')
             ->join('companies','orders.agent_id','companies.id')
             ->select('orders.*','companies.company_name')
             ->where('orders.is_processed','no')
             ->get();
 
-           //var_dump($viewAllOrders); die;
+        
 
         return view('pendingOrderList')->with('viewAllOrders',$viewAllOrders);
 

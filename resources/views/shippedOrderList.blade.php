@@ -22,6 +22,7 @@
           <th scope="col">Weight</th>
           <th scope="col">Order Date</th>
           <th scope="col">Booking Amount</th>
+          <th scope="col">Processing Amount</th>
           <th scope="col">Profit </th>
           <th scope="col">Action</th>
         </tr>
@@ -37,9 +38,10 @@
           <td>{{ $showOrdersDetails->weight }}</td>
           <td>{{ $showOrdersDetails->order_date }}</td>
           <td>{{ $showOrdersDetails->booking_amount }}</td>
+          <td>{{ $showOrdersDetails->processing_amount }}</td>
           <td>{{ $showOrdersDetails->net_profit }}</td>
           
-@php       $totalProfit = $totalProfit + $showOrdersDetails->net_profit; @endphp
+@php $totalProfit = $totalProfit + $showOrdersDetails->net_profit; @endphp
 
           <td>
           <a href="">
@@ -54,9 +56,7 @@
 
         </tr>
 
-
         @endforeach
-
         
       </tbody>
     </table>
