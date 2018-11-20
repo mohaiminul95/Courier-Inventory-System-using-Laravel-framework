@@ -311,7 +311,7 @@
             <!-- start: User Dropdown -->
             <li class="dropdown">
               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="halflings-icon white user"></i> Łukasz Holeczek
+                <i class="halflings-icon white user"></i> {{ Auth::user()->name }}
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
@@ -319,7 +319,21 @@
                   <span>Account Settings</span>
                 </li>
                 <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                <li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+                <li>
+                  
+                  <a href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();"> 
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </li>    
+
+
+                </li>
               </ul>
             </li>
             <!-- end: User Dropdown -->

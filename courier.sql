@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2018 at 08:57 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Nov 20, 2018 at 04:38 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,10 +45,7 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `company_name`, `owner_name`, `email`, `phone`, `company_type`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Spadestack', 'Spadestack Owner', 'admin@admin.com', '01624585608', 'IT Solutions', 'Bashundara R/A, Dhaka', '2018-10-27 04:10:40', '2018-10-27 04:10:40'),
-(2, 'Social Organization', 'Wasif Jami', 'wasifjami@gmail.com', '0912372314', 'Charity', 'Baridhara,Dhaka', '2018-10-27 06:49:10', '2018-10-27 06:49:10'),
-(3, 'srsgtfsdf', 'sdfsgrgrhasbdkj', 'jsdbj@c.com', '83149821489', 'gthththsdfa', 'fghgfhj', '2018-10-27 09:22:16', '2018-10-27 09:22:16'),
-(4, 'srsgtfsdf', 'wertrew', 'admin@admin.com', '254252345', 'dfdaf', 'kjjkj', '2018-10-27 09:23:06', '2018-10-27 09:23:06');
+(1, 'Spadestack IT', 'spadestack', 'spadestack@gmail.com', '0182329324', 'IT', 'Dhaka', '2018-11-19 20:02:46', '2018-11-19 20:02:46');
 
 -- --------------------------------------------------------
 
@@ -67,10 +64,10 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(8, '2014_10_12_000000_create_users_table', 1),
-(9, '2014_10_12_100000_create_password_resets_table', 1),
-(10, '2018_10_26_235155_create_companies_table', 1),
-(11, '2018_10_27_154246_create_orders_table', 2);
+(12, '2014_10_12_000000_create_users_table', 1),
+(13, '2014_10_12_100000_create_password_resets_table', 1),
+(14, '2018_10_26_235155_create_companies_table', 1),
+(15, '2018_10_27_154246_create_orders_table', 1);
 
 -- --------------------------------------------------------
 
@@ -85,8 +82,8 @@ CREATE TABLE `orders` (
   `order_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parcel_desc` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `weight` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `booking_amount` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_processed` enum('yes','no') COLLATE utf8mb4_unicode_ci DEFAULT 'no',
+  `booking_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_processed` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `processing_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `net_profit` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `processing_date` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -99,7 +96,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `agent_id`, `order_date`, `parcel_desc`, `weight`, `booking_amount`, `is_processed`, `processing_amount`, `net_profit`, `processing_date`, `created_at`, `updated_at`) VALUES
-(1, '2333', '2', '2018-10-03', 'ad', '400', '233', NULL, NULL, NULL, NULL, '2018-10-27 10:37:01', '2018-10-27 10:37:01');
+(1, '233', '1', '2018-11-22', 'NA', '1234', '3000', NULL, NULL, NULL, NULL, '2018-11-19 20:07:25', '2018-11-19 20:07:25');
 
 -- --------------------------------------------------------
 
@@ -129,6 +126,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$JOUoJrQbTlJbWYw9UBw56.AUuFHH4So.EPETb.19/0kY0uGo3WaNC', 'jaGQyhJXtWzzzM6MzHPf9M7Lg0RbyB4ZmZBMW9s262iJtDq0L1rcZBA8WoIk', '2018-11-19 20:09:22', '2018-11-19 20:09:22');
 
 --
 -- Indexes for dumped tables
@@ -173,13 +177,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -191,7 +195,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
