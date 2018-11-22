@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="formBox" style="min-height: 50px; width: 70%; margin: 0 auto;">
+<div class="formBox" style="min-height: 700px; width: 70%; margin: 0 auto;">
   
 
 <h1 style="text-align: center; padding: 15px;">ALL PENDING ORDERS HERE</h1>
@@ -12,7 +12,7 @@
 
   <div class="box-content" style="width: 118%;">
 
-    <table class="table table-striped">
+    <table class="table table-striped display" id="datatable">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -143,7 +143,7 @@
 
 
 
-@endsection
+
 
 
 
@@ -220,3 +220,7 @@ function processOrders(id, agent_id) {
 
 
 </script>
+
+
+
+@endsection

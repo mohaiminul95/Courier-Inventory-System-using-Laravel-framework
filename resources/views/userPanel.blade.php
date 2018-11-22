@@ -19,6 +19,7 @@
   <!-- start: CSS -->
   <link id="bootstrap-style" href="{{ asset('public/backend/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('public/backend/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+  <link id="base-style" href="{{ asset('public/backend/css/datatables.css') }}" rel="stylesheet">
   <link id="base-style" href="{{ asset('public/backend/css/style.css') }}" rel="stylesheet">
   <link id="base-style-responsive" href="{{ asset('public/backend/css/style-responsive.css') }}" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
@@ -42,6 +43,17 @@
   <link rel="shortcut icon" href="{{ URL::to('public/backend/img/favicon.ico') }}">
   <!-- end: Favicon -->
   
+  <script src="{{ asset('public/backend/js/datatables.js') }}"></script>
+  <script src="{{ asset('public/backend/js/jquery.dataTables.min.js') }}"></script>
+
+  <script>
+  
+  $(document).ready( function () {
+      $('#datatable').DataTable();
+        
+    });
+
+</script>
     
     
     
@@ -350,7 +362,7 @@
     <div class="row-fluid">
         
       <!-- start: Main Menu -->
-      <div id="sidebar-left" class="span2">
+      <div id="sidebar-left" class="span2" style="min-height: 700px;">
         <div class="nav-collapse sidebar-nav">
           <ul class="nav nav-tabs nav-stacked main-menu">
             <li><a href="{{ URL::to('userpanel') }}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Add Agent</span></a></li> 
@@ -366,12 +378,12 @@
       </div>
       <!-- end: Main Menu -->
       
-      <noscript>
+      <!-- <noscript>
         <div class="alert alert-block span10">
           <h4 class="alert-heading">Warning!</h4>
           <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
         </div>
-      </noscript>
+      </noscript> -->
       
      @yield('content')
   
@@ -440,6 +452,10 @@
     <script src="{{ asset('public/backend/js/retina.js') }}"></script>
 
     <script src="{{ asset('backend/js/custom.js') }}"></script>
+
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
+
+    
    
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 

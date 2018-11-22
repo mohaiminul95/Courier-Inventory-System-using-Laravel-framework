@@ -1,21 +1,23 @@
 @extends('userPanel')
 
 
+
 @section('content')
 
 
-<div class="formBox" style="min-height: 50px; width: 70%; margin: 0 auto;">
+
+<div class="formBox" style="min-height: 1000px; width: 70%; margin: 0 auto;">
   
 
-<h1 style="text-align: center; padding: 15px;">ALL REGISTERED COMPANY NAMES</h1>
+<h1 style="text-align: center; padding: 15px;">ALL REGISTERED AGENTS NAMES</h1>
 
 
   <div class="box-content" style="width: 118%;">
 
-    <table class="table table-striped">
+    <table class="table table-striped display" id="datatable">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+          <!-- <th scope="col">ID</th> -->
           <th scope="col">COMPANY NAME</th>
           <th scope="col">OWNER NAME</th>
           <th scope="col">EMAIL</th>
@@ -30,7 +32,7 @@
         @foreach($allCompanyName as $showCompanyDetails)
 
         <tr>
-          <th scope="row">{{ $showCompanyDetails->id }}</th>
+          <!-- <th scope="row">{{ $showCompanyDetails->id }}</th> -->
           <td id = "company_name_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->company_name }}</td>
           <td id = "owner_name_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->owner_name }}</td>
           <td id = "email_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->email }}</td>
@@ -143,10 +145,8 @@
 
 
 
-
-@endsection
-
 <script type="text/javascript">
+
 
 
 
@@ -245,3 +245,6 @@ function updateAgent() {
 
 </script>
 
+
+
+@endsection
