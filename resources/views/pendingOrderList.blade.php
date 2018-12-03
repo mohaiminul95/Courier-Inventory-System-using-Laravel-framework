@@ -36,6 +36,7 @@
           <td id="order_date_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->order_date }}</td>
           <td id="booking_amount_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->booking_amount }}</td>
           
+          
 
 
           <td>
@@ -60,6 +61,7 @@
             
             
   </div>
+  
 </div>
 
 
@@ -74,6 +76,7 @@
         </button>
       </div>
       <div class="modal-body">
+        
           
 
   <form class="form-horizontal"> @csrf  
@@ -126,16 +129,16 @@
                   <input class="input-xlarge focused" id="edit_net_profit" type="text" name="net_profit">
                  </div>
                 </div> -->
-              
-                  <input id="id" type="hidden" name="id">
+                
+                
               </fieldset>
               </form>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" onclick="updateOrder(0,{{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id }})" class="btn btn-primary">Save changes</button>
-        <button type="button" onclick="updateOrder(1,{{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id }})" class="btn btn-success" data-dismiss="modal">Process</button>
+        <button type="button" id = "saveBtn" class="btn btn-primary">Save Changes</button>
+        <button type="button" id = "processBtn" class="btn btn-success" data-dismiss="modal">Process</button>
       </div>
     </div>
   </div>
@@ -143,7 +146,7 @@
 
 
 
-
+<!--onclick="updateOrder(1,{{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id }})"-->
 
 
 
@@ -152,10 +155,7 @@
   
 function processOrders(id, agent_id) {
 
-
-   
-  
-  
+    
   $("#edit_company_name").val($("#company_name_"+id).html());
   $("#edit_parcel_desc").val($("#parcel_desc_"+id).html());
   $("#edit_weight").val($("#weight_"+id).html());
@@ -165,6 +165,11 @@ function processOrders(id, agent_id) {
   $("#edit_processing_date").val($("#processing_date_"+id).html());
   //$("#edit_net_profit").val($("#net_profit_"+id).html());
   //$("#edit_is_processed").val($("#is_processed_"+id).html());
+
+
+  $("#saveBtn").attr("onclick","updateOrder("+0+","+id+","+agent_id+")");
+  $("#processBtn").attr("onclick","updateOrder("+1+","+id+","+agent_id+")");
+  
   
 } 
 
@@ -183,7 +188,7 @@ function processOrders(id, agent_id) {
    processing_date = $("#edit_processing_date").val();
    net_profit = $("#edit_net_profit").val();
    id = id;
-   agentId = agent_id;
+   agent_id = agent_id;
 
   
 
@@ -200,14 +205,14 @@ function processOrders(id, agent_id) {
                       processing_date: processing_date,
                       net_profit: net_profit,
                       id: id,
-                      agent_id: agentId,
+                      agent_id: agent_id,
                       is_processed:is_processing,
                       _token : '<?php echo csrf_token() ?>',
                   },
 
 
               success:function(data){
-
+                
                   location.reload(); 
                 }
             });

@@ -44,7 +44,6 @@
   <!-- end: Favicon -->
   
   <script src="{{ asset('public/backend/js/datatables.js') }}"></script>
-  <script src="{{ asset('public/backend/js/jquery.dataTables.min.js') }}"></script>
 
   <script>
   

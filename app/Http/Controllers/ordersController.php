@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\company;
+
 use App\order;
+
 
 use DB;
 
@@ -131,12 +134,12 @@ class ordersController extends Controller
 
 
         if($order->save()) {
-          echo "true";
+         // echo "true";
         }
 
-        else
+        else{
                 echo "Error";
-
+        }
 
     }
 

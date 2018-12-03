@@ -17,7 +17,7 @@
     <table class="table table-striped display" id="datatable">
       <thead>
         <tr>
-          <!-- <th scope="col">ID</th> -->
+          <th scope="col">ID</th>
           <th scope="col">COMPANY NAME</th>
           <th scope="col">OWNER NAME</th>
           <th scope="col">EMAIL</th>
@@ -32,7 +32,7 @@
         @foreach($allCompanyName as $showCompanyDetails)
 
         <tr>
-          <!-- <th scope="row">{{ $showCompanyDetails->id }}</th> -->
+          <th scope="row">{{ $showCompanyDetails->id }}</th>
           <td id = "company_name_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->company_name }}</td>
           <td id = "owner_name_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->owner_name }}</td>
           <td id = "email_{{ $showCompanyDetails->id }}">{{ $showCompanyDetails->email }}</td>
