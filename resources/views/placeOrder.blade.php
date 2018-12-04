@@ -83,6 +83,15 @@
                 <div class="controls">
                   <input class="input-xlarge focused" id="focusedInput" type="text" name="booking_amount">
                  </div>
+                </div> 
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">PAYMENT TYPE</label>
+                <div class="controls">
+                  <select name="payment_type">
+                    <option value="c">Cash</option>
+                    <option value="d">Due</option>
+                  </select>
+                 </div>
                 </div>  
 
 

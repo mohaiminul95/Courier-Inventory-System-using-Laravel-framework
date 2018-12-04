@@ -36,6 +36,7 @@ class ordersController extends Controller
     	$order->parcel_desc=$request->parcel_desc;
     	$order->weight=$request->weight;
     	$order->booking_amount=$request->booking_amount;
+        $order->payment_type=$request->payment_type;
     	$order->save();
 
 
