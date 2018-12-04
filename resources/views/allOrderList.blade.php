@@ -20,6 +20,7 @@
           <th scope="col">Parcel Description</th>
           <th scope="col">Weight</th>
           <th scope="col">Order Date</th>
+          <th scope="col">Payment Type</th>
           <th scope="col">Booking Amount</th>
           <th scope="col">Status</th>
         </tr>
@@ -34,6 +35,7 @@
           <td>{{ $showOrdersDetails->parcel_desc }}</td>
           <td>{{ $showOrdersDetails->weight }}</td>
           <td>{{ $showOrdersDetails->order_date }}</td>
+          <td>{{ $showOrdersDetails->payment_type }}</td>
           <td>{{ $showOrdersDetails->booking_amount }}</td>
           <td>{{ ucfirst($showOrdersDetails->is_processed)}}</td>
 

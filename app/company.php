@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class company extends Model
 {
     protected $fillable = [
-        'company_name', 'owner_name', 'email','phone', 'company_type', 'address',
+        'company_type', 'company_name', 'owner_name', 'email','phone', 'company_desc', 'address',
     ];
 
     public function order()

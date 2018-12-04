@@ -88,8 +88,8 @@
                 <label class="control-label" for="focusedInput">PAYMENT TYPE</label>
                 <div class="controls">
                   <select name="payment_type">
-                    <option value="c">Cash</option>
-                    <option value="d">Due</option>
+                    <option value="CASH">Cash</option>
+                    <option value="DUE">Due</option>
                   </select>
                  </div>
                 </div>  

@@ -21,6 +21,8 @@
           <th scope="col">Weight</th>
           <th scope="col">Order Date</th>
           <th scope="col">Booking Amount</th>
+          <th scope="col">Processing Amount</th>
+          <th scope="col">Payment Type</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -35,16 +37,18 @@
           <td id="weight_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->weight }}</td>
           <td id="order_date_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->order_date }}</td>
           <td id="booking_amount_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->booking_amount }}</td>
+          <td id="processing_amount_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->processing_amount }}</td>
+          <td id="payment_type_{{ $showOrdersDetails->id }}">{{ $showOrdersDetails->payment_type }}</td>
           
           
 
 
           <td>
           <a href="">
-            <button class="btn btn-primary" onclick="processOrders({{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id}})" data-toggle="modal" data-target="#exampleModal">EDIT</button>
+            <button class="btn btn-primary btn-sm" onclick="processOrders({{ $showOrdersDetails->id }}, {{ $showOrdersDetails->agent_id}})" data-toggle="modal" data-target="#exampleModal">EDIT</button>
           </a>
           <a href="">
-            <button class="btn btn-danger">DELETE</button>
+            <button class="btn btn-danger btn-sm">DELETE</button>
           </a>
           
         </td>
@@ -84,17 +88,17 @@
                 <div class="control-group">
                 <label class="control-label" for="focusedInput">Company Name</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="edit_company_name" type="text" name="company_name">
+                  <input readonly class="input-xlarge focused" id="edit_company_name" type="text" name="company_name">
                 </div>
                 </div>
                 <div class="control-group">
                 <label class="control-label" for="focusedInput">Parcel Description</label>
                 <div class="controls">
-                  <input class="input-xlarge focused" id="edit_parcel_desc" type="text" name="parcel_desc">
+                  <input readonly class="input-xlarge focused" id="edit_parcel_desc" type="text" name="parcel_desc">
                 </div>
                 </div>
                 <div class="control-group">
-                <label class="control-label" for="focusedInput">Weight</label>
+                <label class="control-label" for="focusedInput">Weight(KG)</label>
                 <div class="controls">
                   <input class="input-xlarge focused" id="edit_weight" type="text" name="weight">
                 </div>
@@ -117,6 +121,15 @@
                   <input class="input-xlarge focused" id="edit_processing_amount" type="text" name="processing_amount">
                  </div>
                 </div>  
+                <div class="control-group">
+                <label class="control-label" for="focusedInput">PAYMENT TYPE</label>
+                <div class="controls">
+                  <select name="payment_type" id="edit_payment_type" >
+                    <option value="CASH">Cash</option>
+                    <option value="DUE">Due</option>
+                  </select>
+                 </div>
+                </div> 
                 <div class="control-group">
                 <label class="control-label" for="edit_address">Processing Date</label>
                 <div class="controls">
@@ -155,6 +168,7 @@
   
 function processOrders(id, agent_id) {
 
+
     
   $("#edit_company_name").val($("#company_name_"+id).html());
   $("#edit_parcel_desc").val($("#parcel_desc_"+id).html());
@@ -162,6 +176,8 @@ function processOrders(id, agent_id) {
   $("#edit_order_date").val($("#order_date_"+id).html());
   $("#edit_booking_amount").val($("#booking_amount_"+id).html());
   $("#edit_processing_amount").val($("#processing_amount_"+id).html());
+  $("#edit_payment_type").val($("#payment_type_"+id).html());
+  
   $("#edit_processing_date").val($("#processing_date_"+id).html());
   //$("#edit_net_profit").val($("#net_profit_"+id).html());
   //$("#edit_is_processed").val($("#is_processed_"+id).html());
@@ -186,6 +202,7 @@ function processOrders(id, agent_id) {
    booking_amount = $("#edit_booking_amount").val();
    processing_amount = $("#edit_processing_amount").val();
    processing_date = $("#edit_processing_date").val();
+   payment_type = $("#edit_payment_type").val();
    net_profit = $("#edit_net_profit").val();
    id = id;
    agent_id = agent_id;
@@ -202,6 +219,7 @@ function processOrders(id, agent_id) {
                       order_date: order_date,
                       booking_amount: booking_amount,
                       processing_amount: processing_amount,
+                      payment_type: payment_type,
                       processing_date: processing_date,
                       net_profit: net_profit,
                       id: id,

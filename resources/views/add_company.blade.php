@@ -13,6 +13,15 @@
 <div class="box-content">
 						<form class="form-horizontal" action="{{ url('insertOrupdate_company') }}" method="POST"> @csrf  
 							<fieldset>
+								<div class="control-group">
+				                <label class="control-label" for="focusedInput">Company Type</label>
+				                <div class="controls">
+				                  <select name="company_type" >
+				                    <option value="Agent">Agent</option>
+				                    <option value="Vendor">Vendor</option>
+				                  </select>
+				                 </div>
+				                </div> 
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">Company Name</label>
 								<div class="controls">
@@ -38,9 +47,9 @@
 								</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">Company Type</label>
+								<label class="control-label" for="focusedInput">Company Description</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" type="text" name="company_type">
+								  <input class="input-xlarge focused" id="focusedInput" type="text" name="company_desc">
 							    </div>
 							  </div>
 							   <div class="control-group">

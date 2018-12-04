@@ -3,7 +3,11 @@
 
 @section('content')
 
-@php $totalProfit = 0; @endphp
+@php 
+  $totalProfit = 0; 
+  $totalCash = 0;
+  $totalDue = 0;
+@endphp
 
 <div class="formBox" style="min-height: 700px; width: 70%; margin: 0 auto;">
   
@@ -23,6 +27,7 @@
           <th scope="col">Order Date</th>
           <th scope="col">Booking Amount</th>
           <th scope="col">Processing Amount</th>
+          <th scope="col">Payment Type</th>
           <th scope="col">Profit </th>
           <th scope="col">Action</th>
         </tr>
@@ -39,9 +44,22 @@
           <td>{{ $showOrdersDetails->order_date }}</td>
           <td>{{ $showOrdersDetails->booking_amount }}</td>
           <td>{{ $showOrdersDetails->processing_amount }}</td>
+          <td>{{ $showOrdersDetails->payment_type }}</td>
           <td>{{ $showOrdersDetails->net_profit }}</td>
           
-@php $totalProfit = $totalProfit + $showOrdersDetails->net_profit; @endphp
+          @php 
+            
+            if($showOrdersDetails->payment_type == "CASH"){
+              $totalCash = $totalCash+$showOrdersDetails->net_profit;
+            }else{
+            
+              $totalDue = $totalDue+$showOrdersDetails->net_profit;
+            }            
+
+
+            $totalProfit = $totalProfit + $showOrdersDetails->net_profit; 
+
+          @endphp
 
           <td>
           <a href="">
@@ -63,6 +81,8 @@
 
 
     <div>
+      <h3> Total Cash: {{$totalCash}} </h3>
+      <h3> Total Due: {{$totalDue}} </h3>
       <h3> Total profit: {{$totalProfit}} </h3>
     </div>
             

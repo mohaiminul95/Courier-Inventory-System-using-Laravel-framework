@@ -125,6 +125,7 @@ class ordersController extends Controller
         $order->processing_date = $request->processing_date;
         $order->id = $request->id;
         $order->agent_id = $request->agent_id;
+        $order->payment_type = $request->payment_type;
 
         if($request->is_processed == 1){
             $order->is_processed = 'yes';            

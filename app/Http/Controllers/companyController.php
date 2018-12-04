@@ -18,15 +18,16 @@ class companyController extends Controller
 
     	
         $company = company::firstOrNew(['id'=>$request->id]);
-    	$company->company_name=$request->company_name;
+    	$company->company_type=$request->company_type;
+        $company->company_name=$request->company_name;
     	$company->owner_name=$request->owner_name;
     	$company->email=$request->email;
     	$company->phone=$request->phone;
-    	$company->company_type=$request->company_type;
+    	$company->company_desc=$request->company_desc;
     	$company->address=$request->address;
     	
 
-
+        //dd($company);
 
     	if($company->save()) {
 
