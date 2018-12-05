@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2018 at 04:21 PM
+-- Generation Time: Dec 05, 2018 at 03:04 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -30,11 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `companies` (
   `id` int(10) UNSIGNED NOT NULL,
+  `company_type` enum('Agent','Vendor') COLLATE utf8mb4_unicode_ci NOT NULL,
   `company_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `owner_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company_desc` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -44,11 +45,13 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `company_name`, `owner_name`, `email`, `phone`, `company_type`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'Spadestack 2', 'Spadestack owner', 'spadestack@gxxxx.com', '0182329324', 'IT', 'Dhaka', '2018-11-19 20:02:46', '2018-11-22 08:28:33'),
-(4, 'Emmerich LLC', 'Geoffrey Heller I', 'josephine.walsh@example.com', '743.885.4518 x993', 'Multi-tiered modular policy', '297 Georgianna Parkways Apt. 747\nSouth Bradyton, WY 86767', '2018-11-21 14:35:10', '2018-11-21 14:35:10'),
-(5, 'Homenick, Cruickshank and Howe', 'Marianne Stiedemann', 'gutkowski.spencer@example.com', '586-655-0670 x68233', 'Visionary bottom-line service-desk', '9968 Schuppe Pass\nCaylastad, NJ 70805-4960', '2018-11-21 14:35:10', '2018-11-21 14:35:10'),
-(52, 'Demo Book Publisher', 'book owner', 'booowner@gmail.com', '012931444', 'Publisher', 'NA', '2018-11-22 11:32:06', '2018-11-22 11:32:06');
+INSERT INTO `companies` (`id`, `company_type`, `company_name`, `owner_name`, `email`, `phone`, `company_desc`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Agent', 'Spadestack 2', 'Spadestack owner', 'spadestack@gxxxx.com', '0182329324', 'IT', 'Dhaka', '2018-11-19 20:02:46', '2018-11-22 08:28:33'),
+(4, 'Agent', 'Emmerich LLC', 'Geoffrey Heller I', 'josephine.walsh@example.com', '743.885.4518 x993', 'Multi-tiered modular policy', '297 Georgianna Parkways Apt. 747\nSouth Bradyton, WY 86767', '2018-11-21 14:35:10', '2018-11-21 14:35:10'),
+(5, 'Agent', 'Homenick, Cruickshank and Howe', 'Marianne Stiedemann', 'gutkowski.spencer@example.com', '586-655-0670 x68233', 'Visionary bottom-line service-desk', '9968 Schuppe Pass\nCaylastad, NJ 70805-4960', '2018-11-21 14:35:10', '2018-11-21 14:35:10'),
+(52, 'Agent', 'Demo Book Publisher', 'book owner', 'booowner@gmail.com', '012931444', 'Publisher', 'NA', '2018-11-22 11:32:06', '2018-11-22 11:32:06'),
+(53, 'Agent', 'NANO TEch', 'tech', 'ws@ddd.c', '8748848', 'Dessss', 'dhfkgdk', '2018-12-04 10:10:46', '2018-12-04 10:10:46'),
+(54, 'Vendor', 'SkyTech', 'skytech admin', 'ws@ddd.c', '01586364799', 'It solution', 'none', '2018-12-04 10:27:57', '2018-12-04 10:27:57');
 
 -- --------------------------------------------------------
 
@@ -85,6 +88,7 @@ CREATE TABLE `orders` (
   `order_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parcel_desc` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `weight` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_type` enum('CASH','DUE') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `booking_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_processed` enum('yes','no') COLLATE utf8mb4_unicode_ci DEFAULT 'no',
   `processing_amount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -98,11 +102,14 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `order_id`, `agent_id`, `order_date`, `parcel_desc`, `weight`, `booking_amount`, `is_processed`, `processing_amount`, `net_profit`, `processing_date`, `created_at`, `updated_at`) VALUES
-(1, '222', '1', '2018-11-05', 'abcde abcde abcde abcde abcde', '123', '1123', 'no', NULL, NULL, NULL, '2018-11-22 08:30:20', '2018-11-22 08:30:20'),
-(2, '878', '4', '2018-11-28', 'parcel', '687', '7865', 'no', NULL, NULL, NULL, '2018-11-22 08:30:51', '2018-11-22 08:30:51'),
-(3, '655', '5', '2018-11-05', 'abcde abcde abcde abcde abcde', '501', '1123', 'no', NULL, '1123', NULL, '2018-11-22 08:31:20', '2018-11-22 11:12:45'),
-(4, '908', '52', '2018-11-28', 'parcel ltd', '687', '7865', 'yes', '7000', '865', '2018-12-04', '2018-11-22 11:32:49', '2018-12-03 09:20:03');
+INSERT INTO `orders` (`id`, `order_id`, `agent_id`, `order_date`, `parcel_desc`, `weight`, `payment_type`, `booking_amount`, `is_processed`, `processing_amount`, `net_profit`, `processing_date`, `created_at`, `updated_at`) VALUES
+(1, '222', '1', '2018-11-07', 'abcde abcde abcde abcde abcde', '123', 'DUE', '1123', 'yes', '1000', '123', NULL, '2018-11-22 08:30:20', '2018-12-04 09:42:51'),
+(2, '878', '4', '2018-11-28', 'parcel', '687', 'CASH', '7865', 'no', NULL, NULL, NULL, '2018-11-22 08:30:51', '2018-11-22 08:30:51'),
+(3, '655', '5', '2018-11-05', 'abcde abcde abcde abcde abcde', '501', 'CASH', '1123', 'yes', '700', '1123', NULL, '2018-11-22 08:31:20', '2018-12-04 09:43:00'),
+(4, '908', '52', '2018-11-28', 'parcel ltd', '687', 'DUE', '7865', 'yes', '7000', '865', '2018-12-04', '2018-11-22 11:32:49', '2018-12-03 09:20:03'),
+(5, '544', '1', '2018-12-04', 'doc', '1', 'CASH', '700', 'no', NULL, NULL, NULL, '2018-12-03 09:45:11', '2018-12-03 09:45:11'),
+(6, '544', '1', '2016-10-01', 'doc', '1', 'DUE', '875', 'yes', '300', '875', NULL, '2018-12-03 09:45:50', '2018-12-04 09:43:08'),
+(7, '3431', '52', '2018-12-05', 'books', '1234124', 'CASH', '9990', 'no', NULL, NULL, NULL, '2018-12-04 08:59:50', '2018-12-04 08:59:50');
 
 -- --------------------------------------------------------
 
@@ -138,7 +145,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$JOUoJrQbTlJbWYw9UBw56.AUuFHH4So.EPETb.19/0kY0uGo3WaNC', 'c9it5pNom3Aac0nJUS1lD3sQb9OOWznERMrYDH6wmB3HiTDPSKjfYXlBMH8u', '2018-11-19 20:09:22', '2018-11-19 20:09:22');
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$JOUoJrQbTlJbWYw9UBw56.AUuFHH4So.EPETb.19/0kY0uGo3WaNC', 'xeL1jMKnAvhyFnLOsYYnGT1uK3e8f9CC0Z37OBRwfyn7veC8aoYTNWwWxOxi', '2018-11-19 20:09:22', '2018-11-19 20:09:22');
 
 --
 -- Indexes for dumped tables
@@ -183,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -195,7 +202,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
