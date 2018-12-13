@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 03:04 PM
+-- Generation Time: Dec 13, 2018 at 06:57 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -51,7 +51,8 @@ INSERT INTO `companies` (`id`, `company_type`, `company_name`, `owner_name`, `em
 (5, 'Agent', 'Homenick, Cruickshank and Howe', 'Marianne Stiedemann', 'gutkowski.spencer@example.com', '586-655-0670 x68233', 'Visionary bottom-line service-desk', '9968 Schuppe Pass\nCaylastad, NJ 70805-4960', '2018-11-21 14:35:10', '2018-11-21 14:35:10'),
 (52, 'Agent', 'Demo Book Publisher', 'book owner', 'booowner@gmail.com', '012931444', 'Publisher', 'NA', '2018-11-22 11:32:06', '2018-11-22 11:32:06'),
 (53, 'Agent', 'NANO TEch', 'tech', 'ws@ddd.c', '8748848', 'Dessss', 'dhfkgdk', '2018-12-04 10:10:46', '2018-12-04 10:10:46'),
-(54, 'Vendor', 'SkyTech', 'skytech admin', 'ws@ddd.c', '01586364799', 'It solution', 'none', '2018-12-04 10:27:57', '2018-12-04 10:27:57');
+(54, 'Vendor', 'SkyTech', 'skytech admin', 'ws@ddd.c', '01586364799', 'It solution', 'none', '2018-12-04 10:27:57', '2018-12-04 10:27:57'),
+(55, 'Vendor', 'Info Solution', 'info', 'info@info.com', '0123785940228', 'solution', 'na', '2018-12-05 08:36:01', '2018-12-05 08:36:01');
 
 -- --------------------------------------------------------
 
@@ -85,6 +86,7 @@ CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `order_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `agent_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vendor_id` int(11) DEFAULT NULL,
   `order_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parcel_desc` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `weight` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -102,14 +104,17 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `order_id`, `agent_id`, `order_date`, `parcel_desc`, `weight`, `payment_type`, `booking_amount`, `is_processed`, `processing_amount`, `net_profit`, `processing_date`, `created_at`, `updated_at`) VALUES
-(1, '222', '1', '2018-11-07', 'abcde abcde abcde abcde abcde', '123', 'DUE', '1123', 'yes', '1000', '123', NULL, '2018-11-22 08:30:20', '2018-12-04 09:42:51'),
-(2, '878', '4', '2018-11-28', 'parcel', '687', 'CASH', '7865', 'no', NULL, NULL, NULL, '2018-11-22 08:30:51', '2018-11-22 08:30:51'),
-(3, '655', '5', '2018-11-05', 'abcde abcde abcde abcde abcde', '501', 'CASH', '1123', 'yes', '700', '1123', NULL, '2018-11-22 08:31:20', '2018-12-04 09:43:00'),
-(4, '908', '52', '2018-11-28', 'parcel ltd', '687', 'DUE', '7865', 'yes', '7000', '865', '2018-12-04', '2018-11-22 11:32:49', '2018-12-03 09:20:03'),
-(5, '544', '1', '2018-12-04', 'doc', '1', 'CASH', '700', 'no', NULL, NULL, NULL, '2018-12-03 09:45:11', '2018-12-03 09:45:11'),
-(6, '544', '1', '2016-10-01', 'doc', '1', 'DUE', '875', 'yes', '300', '875', NULL, '2018-12-03 09:45:50', '2018-12-04 09:43:08'),
-(7, '3431', '52', '2018-12-05', 'books', '1234124', 'CASH', '9990', 'no', NULL, NULL, NULL, '2018-12-04 08:59:50', '2018-12-04 08:59:50');
+INSERT INTO `orders` (`id`, `order_id`, `agent_id`, `vendor_id`, `order_date`, `parcel_desc`, `weight`, `payment_type`, `booking_amount`, `is_processed`, `processing_amount`, `net_profit`, `processing_date`, `created_at`, `updated_at`) VALUES
+(1, '222', '1', NULL, '2018-11-07', 'abcde abcde abcde abcde abcde', '123', 'DUE', '1123', 'yes', '1000', '123', NULL, '2018-11-22 08:30:20', '2018-12-04 09:42:51'),
+(2, '878', '4', NULL, '2018-11-28', 'parcel', '687', 'CASH', '7865', 'no', NULL, NULL, NULL, '2018-11-22 08:30:51', '2018-11-22 08:30:51'),
+(3, '655', '5', NULL, '2018-11-05', 'abcde abcde abcde abcde abcde', '501', 'CASH', '1123', 'yes', '700', '1123', NULL, '2018-11-22 08:31:20', '2018-12-04 09:43:00'),
+(4, '908', '52', NULL, '2018-11-28', 'parcel ltd', '687', 'DUE', '7865', 'yes', '7000', '865', '2018-12-04', '2018-11-22 11:32:49', '2018-12-03 09:20:03'),
+(5, '544', '1', NULL, '2018-12-04', 'doc', '1', 'CASH', '700', 'no', NULL, NULL, NULL, '2018-12-03 09:45:11', '2018-12-03 09:45:11'),
+(6, '544', '1', NULL, '2016-10-01', 'doc', '1', 'DUE', '875', 'yes', '300', '875', NULL, '2018-12-03 09:45:50', '2018-12-04 09:43:08'),
+(7, '3431', '52', NULL, '2018-12-05', 'books', '1234124', 'CASH', '9990', 'no', NULL, NULL, NULL, '2018-12-04 08:59:50', '2018-12-04 08:59:50'),
+(8, '2000', '53', 55, '2018-12-26', 'chip', '1200', 'DUE', '1241', 'no', NULL, NULL, NULL, '2018-12-05 08:37:18', '2018-12-05 08:37:18'),
+(9, '6000', '1', NULL, '2018-12-11', 'dates', '124212', 'CASH', '2000', 'no', NULL, NULL, NULL, '2018-12-05 08:39:40', '2018-12-05 08:39:40'),
+(10, '777', '5', NULL, '2018-12-21', 'ggg', '76', 'DUE', '789', 'no', NULL, NULL, NULL, '2018-12-05 08:43:44', '2018-12-05 08:43:44');
 
 -- --------------------------------------------------------
 
@@ -190,7 +195,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -202,7 +207,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

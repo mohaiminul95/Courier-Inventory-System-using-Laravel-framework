@@ -3,6 +3,7 @@
 
 
 @section('content')
+        @php dd($viewAllOrders) @endphp
 
 <div class="formBox" style="min-height: 700px; width: 70%; margin: 0 auto;">
   
@@ -143,6 +144,20 @@
                  </div>
                 </div> -->
                 
+                 <div class="control-group">
+                <label class="control-label" for="focusedInput" readonly>Vendor Name</label>
+                <div class="controls">
+                  <select name = "vendor_id">
+                    <option>---</option>
+
+                    
+                  </select>
+                </div>
+                </div>
+
+
+
+
                 
               </fieldset>
               </form>

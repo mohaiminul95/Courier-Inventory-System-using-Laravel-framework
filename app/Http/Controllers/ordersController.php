@@ -31,6 +31,11 @@ class ordersController extends Controller
 
     	$order=new order;
     	$order->agent_id=$request->agent_id;
+        if(is_int($request->vendor_id)){
+            $order->vendor_id=$request->vendor_id;
+        }else{            
+            $order->vendor_id=NULL;
+        }
     	$order->order_id=$request->order_id;
     	$order->order_date=$request->order_date;
     	$order->parcel_desc=$request->parcel_desc;
@@ -86,11 +91,16 @@ class ordersController extends Controller
             ->select('orders.*','companies.company_name')
             ->where('orders.is_processed','no')
             ->get();
+            
+            $vendors = $this->getVendorList();
 
-        
+        return view('pendingOrderList')->with('viewAllOrders', $viewAllOrders);
 
-        return view('pendingOrderList')->with('viewAllOrders',$viewAllOrders);
+    }
 
+
+    public function getVendorList() {
+        return DB::table('companies')->select('companies.id', 'companies.company_name')->where('companies.company_type','vendor')->get();
     }
 
 
@@ -104,6 +114,8 @@ class ordersController extends Controller
             ->select('orders.*','companies.company_name', 'orders.net_profit')
             ->where('orders.is_processed','yes')
             ->get();
+
+
         return view('shippedOrderList')->with('viewAllOrders',$viewAllOrders);
 
     }

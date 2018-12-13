@@ -48,12 +48,17 @@
                 <div class="controls">
                   <select name = "agent_id">
                     <option>---</option>
+                    
                     @foreach($allCompanyName as $showCompanyName)
-                    <option value=" {{ $showCompanyName->id }}"> {{ $showCompanyName->company_name }}</option>
+                      @if($showCompanyName->company_type == "Agent")
+                        <option value=" {{ $showCompanyName->id }}"> {{ $showCompanyName->company_name }}</option>
+                       @endif 
                     @endforeach
+                    
                   </select>
                 </div>
                 </div>
+
                 <div class="control-group">
                 <label class="control-label" for="focusedInput">ORDER ID</label>
                 <div class="controls">
@@ -93,6 +98,20 @@
                   </select>
                  </div>
                 </div>  
+                <div class="control-group">
+                <label class="control-label" for="focusedInput" readonly>Vendor Name</label>
+                <div class="controls">
+                  <select name = "vendor_id">
+                    <option>---</option>
+
+                    @foreach($allCompanyName as $showCompanyName)
+                      @if($showCompanyName->company_type == "Vendor")
+                        <option value=" {{ $showCompanyName->id }}"> {{ $showCompanyName->company_name }}</option>
+                       @endif 
+                    @endforeach
+                  </select>
+                </div>
+                </div>
 
 
 
