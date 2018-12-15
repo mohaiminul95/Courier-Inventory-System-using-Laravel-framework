@@ -3,7 +3,7 @@
 
 
 @section('content')
-        @php dd($viewAllOrders) @endphp
+
 
 <div class="formBox" style="min-height: 700px; width: 70%; margin: 0 auto;">
   
@@ -147,9 +147,11 @@
                  <div class="control-group">
                 <label class="control-label" for="focusedInput" readonly>Vendor Name</label>
                 <div class="controls">
-                  <select name = "vendor_id">
-                    <option>---</option>
-
+                  <select name = "vendor_id" id="edit_vandor_id">
+                      <option>---</option>
+                    @foreach($vendors as $vendor)
+                      <option value="{{$vendor->id}}" >{{$vendor->company_name}}</option>
+                    @endforeach
                     
                   </select>
                 </div>
@@ -221,9 +223,9 @@ function processOrders(id, agent_id) {
    net_profit = $("#edit_net_profit").val();
    id = id;
    agent_id = agent_id;
-
+   vendor_id = $("#edit_vandor_id").val();
   
-
+   //alert(vendor_id); return;
    $.ajax({
                type:'POST',
                url:'/courier/update_order',
@@ -240,12 +242,13 @@ function processOrders(id, agent_id) {
                       id: id,
                       agent_id: agent_id,
                       is_processed:is_processing,
-                      _token : '<?php echo csrf_token() ?>',
+                      vendor_id : vendor_id,
+                      _token : '<?php echo csrf_token()?>',
                   },
 
 
               success:function(data){
-                
+                  //return;
                   location.reload(); 
                 }
             });

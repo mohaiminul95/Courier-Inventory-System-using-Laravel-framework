@@ -94,7 +94,11 @@ class ordersController extends Controller
             
             $vendors = $this->getVendorList();
 
-        return view('pendingOrderList')->with('viewAllOrders', $viewAllOrders);
+
+            //return  view('admin.products.create', compact('categorys','brands','selected_catagories','selected_brand'));
+
+      //  return view('pendingOrderList')->with('viewAllOrders', $viewAllOrders);
+              return view('pendingOrderList',compact('viewAllOrders','vendors'));
 
     }
 
@@ -139,6 +143,14 @@ class ordersController extends Controller
         $order->agent_id = $request->agent_id;
         $order->payment_type = $request->payment_type;
 
+        if(is_numeric($request->vendor_id)){
+            $order->vendor_id = $request->vendor_id;
+            
+        }else{
+            $order->vendor_id = NULL;
+        }
+
+        
         if($request->is_processed == 1){
             $order->is_processed = 'yes';            
         }else{
